@@ -24,5 +24,10 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    // Fixes for some weird behavior with TypeScript Enums
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 };

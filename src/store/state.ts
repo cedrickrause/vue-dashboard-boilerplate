@@ -1,5 +1,7 @@
 import { State } from './types';
 
-export const state: State = {
+const state: State = {
   count: 0,
 };
+
+export { state as default };
