@@ -1,8 +1,8 @@
-import { MutationTree } from "vuex";
-import { State } from "./types";
+import { MutationTree } from 'vuex';
+import { State } from './types';
 
 export enum Mutations {
-  SET_COUNT = "setCount",
+  SET_COUNT = 'setCount',
 }
 
 export const mutations: MutationTree<State> = {

@@ -15,13 +15,13 @@ import { mapActions, mapGetters, mapMutations } from 'vuex';
 export default Vue.extend({
 
   computed: {
-    ...mapGetters({getCount: Getters.GET_COUNT}),
+    ...mapGetters({ getCount: Getters.GET_COUNT }),
   },
 
   methods: {
     ...mapMutations({ setCount: Mutations.SET_COUNT }),
-    ...mapActions({ setCountAction: Actions.SET_COUNT}),
-  }
+    ...mapActions({ setCountAction: Actions.SET_COUNT }),
+  },
 
 });
 </script>

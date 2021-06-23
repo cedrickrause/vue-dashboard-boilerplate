@@ -13,6 +13,6 @@ const store: StoreOptions<State> = {
   getters,
   mutations,
   actions,
-}
+};
 
 export default new Vuex.Store<State>(store);
