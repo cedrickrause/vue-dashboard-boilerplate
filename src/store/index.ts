@@ -4,15 +4,15 @@ import state from './state';
 import { getters } from './getters';
 import { mutations } from './mutations';
 import { actions } from './actions';
-import { State } from './types';
+import { RootState } from './RootState';
 
 Vue.use(Vuex);
 
-const store: StoreOptions<State> = {
+const store: StoreOptions<RootState> = {
   state,
   getters,
   mutations,
   actions,
 };
 
-export default new Vuex.Store<State>(store);
+export default new Vuex.Store<RootState>(store);

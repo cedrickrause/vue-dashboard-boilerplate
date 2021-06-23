@@ -1,6 +1,6 @@
-import { State } from './types';
+import { RootState } from './RootState';
 
-const state: State = {
+const state: RootState = {
   count: 0,
 };
 
