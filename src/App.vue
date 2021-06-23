@@ -1,12 +1,24 @@
 <template>
   <div id="app">
+    <Title msg="Visualization Research Boilerplate" />
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Title from '@/components/Title.vue';
+
+export default Vue.extend({
+  components: {
+    Title,
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
@@ -18,7 +30,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding-bottom: 10px;
 
   a {
     font-weight: bold;
