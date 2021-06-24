@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="dashboard">
     <bootstrap-test />
   </div>
 </template>
@@ -10,6 +10,6 @@ import Vue from 'vue';
 
 export default Vue.extend({
   components: { BootstrapTest },
-  name: 'Home',
+  name: 'Dashboard',
 });
 </script>
