@@ -1,7 +1,7 @@
 <template>
   <div class="bootstrap-test">
     <b-button variant="primary" v-on:click="loadData('./data/mtcars.csv')">Load data</b-button>
-    <div>{{getData}}</div>
+    <div>{{ getData ? getData[0] : getData }}</div>
   </div>
 </template>
 
