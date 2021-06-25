@@ -6,7 +6,7 @@ export enum Mutations {
 }
 
 export const mutations: MutationTree<RootState> = {
-  [Mutations.SET_COUNT](state, payload) {
+  [Mutations.SET_COUNT](state, payload) : void {
     state.count = payload;
   },
 };
