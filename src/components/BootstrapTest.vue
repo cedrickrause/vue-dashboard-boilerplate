@@ -8,21 +8,18 @@
 <script lang="ts">
 import { Actions } from '@/store/actions';
 import { Getters } from '@/store/getters';
-import { Mutations } from '@/store/mutations';
 import Vue from 'vue';
-import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default Vue.extend({
 
   computed: {
     ...mapGetters({
-      getCount: Getters.GET_COUNT,
       getData: Getters.GET_DATA,
     }),
   },
 
   methods: {
-    ...mapMutations({ setCount: Mutations.SET_COUNT }),
     ...mapActions({ loadData: Actions.LOAD_DATA }),
   },
 
