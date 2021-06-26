@@ -2,8 +2,10 @@
   <div id="app">
     <Title msg="Visual Analytics Dashboard Boilerplate" />
     <div id="nav">
-      <router-link to="/">Dashboard</router-link> |
-      <router-link to="/about">About</router-link>
+      <b-nav tabs align="center">
+        <b-nav-item to="/" exact exact-active-class="active">Dashboard</b-nav-item>
+        <b-nav-item to="/about" exact exact-active-class="active">About</b-nav-item>
+      </b-nav>
     </div>
     <router-view/>
   </div>
@@ -31,14 +33,5 @@ export default Vue.extend({
 
 #nav {
   padding-bottom: 10px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
