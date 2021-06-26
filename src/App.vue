@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Title msg="Visualization Research Boilerplate" />
+    <Title msg="Visual Analytics Dashboard Boilerplate" />
     <div id="nav">
       <router-link to="/">Dashboard</router-link> |
       <router-link to="/about">About</router-link>
