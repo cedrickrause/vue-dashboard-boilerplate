@@ -1,21 +1,20 @@
 <template>
   <div class="dashboard">
     <bootstrap-test />
-    <scatter-plot v-if="getData"
-    :data="getData" :xAxisColumn="'mpg'" :yAxisColumn="'disp'" :radiusColumn="'hp'"/>
+    <scatter-plot-wrapper v-if="getData" :dataset="getData" />
   </div>
 </template>
 
 <script lang="ts">
 import BootstrapTest from '@/components/BootstrapTest.vue';
-import ScatterPlot from '@/components/Charts/ScatterPlot.vue';
+import ScatterPlotWrapper from '@/components/Charts/ScatterPlotWrapper.vue';
 import { Actions } from '@/store/actions';
 import { Getters } from '@/store/getters';
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default Vue.extend({
-  components: { BootstrapTest, ScatterPlot },
+  components: { BootstrapTest, ScatterPlotWrapper },
   name: 'Dashboard',
 
   mounted() {
