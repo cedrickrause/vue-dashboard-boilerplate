@@ -33,7 +33,7 @@ export default Vue.extend({
   },
   methods: {
     fire() {
-      this.go = !this.go;
+      this.go = true;
     },
   },
 });
