@@ -1,3 +1,5 @@
+import { MultivariateDataset } from '@/models/MultivariateDataset';
+
 export interface RootState {
-  data: unknown,
+  data: MultivariateDataset | null,
 }

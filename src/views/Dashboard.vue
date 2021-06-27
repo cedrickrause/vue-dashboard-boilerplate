@@ -1,7 +1,8 @@
 <template>
   <div class="dashboard">
     <bootstrap-test />
-    <scatter-plot :data="getData" :xAxisColumn="'mpg'" :yAxisColumn="'disp'" :radiusColumn="'hp'"/>
+    <scatter-plot v-if="getData"
+    :data="getData" :xAxisColumn="'mpg'" :yAxisColumn="'disp'" :radiusColumn="'hp'"/>
   </div>
 </template>
 

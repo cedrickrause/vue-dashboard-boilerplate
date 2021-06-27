@@ -1,7 +1,7 @@
 <template>
   <div class="scatterplot">
     <svg class="scatterplot-svg" :height="height" :width="width">
-      <circle v-for="car in data" :key="car.model"
+      <circle v-for="car in data.data" :key="car.model"
         :cx="xPosition(car[xAxisColumn])"
         :cy="yPosition(car[yAxisColumn])"
         :r="radius(car[radiusColumn])"
@@ -15,10 +15,13 @@ import * as d3 from 'd3';
 import Vue from 'vue';
 import _ from 'lodash';
 import { ScaleLinear } from 'd3';
+import { MultivariateDataset } from '@/models/MultivariateDataset';
 
 export default Vue.extend({
   props: {
-    data: Object,
+    data: {
+      type: Object as () => MultivariateDataset,
+    },
     xAxisColumn: String,
     yAxisColumn: String,
     radiusColumn: String,
@@ -37,24 +40,22 @@ export default Vue.extend({
     };
   },
 
-  watch: {
-    data() {
-      this.createXAxis();
-      this.createYAxis();
-    },
+  mounted() {
+    this.createXAxis();
+    this.createYAxis();
   },
 
   computed: {
     xMaxValue(): number {
-      return Math.max(..._.map(this.data, (entry) => parseFloat(entry[this.xAxisColumn])));
+      return Math.max(..._.map(this.data.data, (entry) => parseFloat(entry[this.xAxisColumn]!)));
     },
 
     yMaxValue(): number {
-      return Math.max(..._.map(this.data, (entry) => parseFloat(entry[this.yAxisColumn])));
+      return Math.max(..._.map(this.data.data, (entry) => parseFloat(entry[this.yAxisColumn]!)));
     },
 
     radiusMaxValue(): number {
-      return Math.max(..._.map(this.data, (entry) => parseFloat(entry[this.radiusColumn])));
+      return Math.max(..._.map(this.data.data, (entry) => parseFloat(entry[this.radiusColumn]!)));
     },
   },
 
