@@ -108,7 +108,7 @@ export default Vue.extend({
 
     radiusScale() : ScaleLinear<number, number, never> {
       return d3.scaleLinear()
-        .domain([0, this.yMaxValue])
+        .domain([0, this.radiusMaxValue])
         .range([this.minRadius, this.maxRadius]);
     },
 
