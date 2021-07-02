@@ -1,10 +1,10 @@
 <template>
   <div class="scatterplot">
     <svg class="scatterplot-svg" :height="height" :width="width">
-      <circle v-for="car in dataset.data" :key="car[dataset.idColumn]"
-        :cx="xPosition(car[xAxisColumn])"
-        :cy="yPosition(car[yAxisColumn])"
-        :r="radius(car[radiusColumn])"
+      <circle v-for="element in dataset.data" :key="element[dataset.idColumn]"
+        :cx="xPosition(element[xAxisColumn])"
+        :cy="yPosition(element[yAxisColumn])"
+        :r="radius(element[radiusColumn])"
         />
     </svg>
   </div>
