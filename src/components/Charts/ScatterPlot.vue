@@ -1,7 +1,7 @@
 <template>
   <div class="scatterplot">
     <svg class="scatterplot-svg" :height="height" :width="width">
-      <circle v-for="car in dataset.data" :key="car.model"
+      <circle v-for="car in dataset.data" :key="car[dataset.idColumn]"
         :cx="xPosition(car[xAxisColumn])"
         :cy="yPosition(car[yAxisColumn])"
         :r="radius(car[radiusColumn])"

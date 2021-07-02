@@ -7,6 +7,7 @@ type MultivariateDatasetEntry = {
 export interface MultivariateDataset {
   data: Array<MultivariateDatasetEntry>,
   columns: Array<string>,
+  idColumn: string,
 }
 
 export class MultivariateDatasetImpl implements MultivariateDataset {
@@ -14,8 +15,12 @@ export class MultivariateDatasetImpl implements MultivariateDataset {
 
   columns: Array<string>;
 
+  idColumn: string;
+
   constructor(data: DSVRowArray<string>, columns: Array<string>) {
     this.data = data.map((entry) => entry);
     this.columns = columns;
+    const [firstColumn] = columns;
+    this.idColumn = firstColumn;
   }
 }
