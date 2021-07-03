@@ -13,7 +13,6 @@
 <script lang="ts">
 import * as d3 from 'd3';
 import Vue from 'vue';
-import _ from 'lodash';
 import { ScaleLinear } from 'd3';
 import { MultivariateDataset } from '@/models/MultivariateDataset';
 
@@ -47,18 +46,21 @@ export default Vue.extend({
 
   computed: {
     xMaxValue(): number {
-      return Math.max(..._.map(this.dataset.data,
-        (entry) => parseFloat(entry[this.xAxisColumn]!)));
+      return Math.max(...this.dataset.data.map(
+        (entry) => entry[this.xAxisColumn],
+      ));
     },
 
     yMaxValue(): number {
-      return Math.max(..._.map(this.dataset.data,
-        (entry) => parseFloat(entry[this.yAxisColumn]!)));
+      return Math.max(...this.dataset.data.map(
+        (entry) => entry[this.yAxisColumn],
+      ));
     },
 
     radiusMaxValue(): number {
-      return Math.max(..._.map(this.dataset.data,
-        (entry) => parseFloat(entry[this.radiusColumn]!)));
+      return Math.max(...this.dataset.data.map(
+        (entry) => entry[this.radiusColumn],
+      ));
     },
   },
 

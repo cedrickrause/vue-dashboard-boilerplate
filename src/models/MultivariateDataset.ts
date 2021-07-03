@@ -1,8 +1,7 @@
-import { DSVRowArray } from 'd3';
 import { BaseDataset } from './BaseDataset';
 
-type MultivariateDatasetEntry = {
-  [key: string]: string | undefined,
+export type MultivariateDatasetEntry = {
+  [key: string]: number,
  };
 
 export interface MultivariateDataset extends BaseDataset {
@@ -18,10 +17,9 @@ export class MultivariateDatasetImpl implements MultivariateDataset {
 
   idColumn: string;
 
-  constructor(data: DSVRowArray<string>, columns: Array<string>) {
-    this.data = data.map((entry) => entry);
+  constructor(data: Array<MultivariateDatasetEntry>, columns: Array<string>, idColumn: string) {
+    this.data = data;
     this.columns = columns;
-    const [firstColumn] = columns;
-    this.idColumn = firstColumn;
+    this.idColumn = idColumn;
   }
 }
