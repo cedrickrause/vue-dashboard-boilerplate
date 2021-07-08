@@ -11,7 +11,7 @@
               <b-form-select
                 id="xAxisInput"
                 v-model="xAxisColumn"
-                :options="dataset.columns"
+                :options="selectableColumns"
                 required></b-form-select>
             </b-form-group>
           </b-col>
@@ -24,7 +24,7 @@
               <b-form-select
                 id="yAxisInput"
                 v-model="yAxisColumn"
-                :options="dataset.columns"
+                :options="selectableColumns"
                 required></b-form-select>
             </b-form-group>
           </b-col>
@@ -37,14 +37,14 @@
               <b-form-select
                 id="radiusInput"
                 v-model="radiusColumn"
-                :options="dataset.columns"
+                :options="selectableColumns"
                 required></b-form-select>
             </b-form-group>
           </b-col>
         </b-form-row>
       </b-container>
 
-    <scatter-plot v-if="this.xAxisColumn && this.yAxisColumn && this.radiusColumn"
+    <scatter-plot
     :dataset="dataset"
     :xAxisColumn="xAxisColumn"
     :yAxisColumn="yAxisColumn"
@@ -69,6 +69,13 @@ export default Vue.extend({
       yAxisColumn: '',
       radiusColumn: '',
     };
+  },
+
+  computed: {
+    selectableColumns() : Array<string> {
+      const { idColumn } = this.dataset;
+      return this.dataset.columns.filter((column) => column !== idColumn);
+    },
   },
 });
 </script>
