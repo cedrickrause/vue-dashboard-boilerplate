@@ -6,6 +6,10 @@
         :cy="yPosition(element[yAxisColumn])"
         :r="radius(element[radiusColumn])"
         />
+        <g class="xAxis">
+        </g>
+        <g class="yAxis">
+        </g>
     </svg>
   </div>
 </template>
@@ -44,6 +48,15 @@ export default Vue.extend({
     this.createYAxis();
   },
 
+  watch: {
+    xAxisColumn() {
+      this.createXAxis();
+    },
+    yAxisColumn() {
+      this.createYAxis();
+    },
+  },
+
   computed: {
     xMaxValue(): number {
       return Math.max(...this.dataset.data.map(
@@ -66,18 +79,14 @@ export default Vue.extend({
 
   methods: {
     createXAxis() {
-      d3.select('.scatterplot-svg')
-        .append('g')
-        .attr('class', 'xAxis')
-        .attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
+      const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.xAxis');
+      g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
         .call(this.xAxisGenerator());
     },
 
     createYAxis() {
-      d3.select('.scatterplot-svg')
-        .append('g')
-        .attr('class', 'yAxis')
-        .attr('transform', `translate(${this.margin.left}, 0)`)
+      const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.yAxis');
+      g.attr('transform', `translate(${this.margin.left}, 0)`)
         .call(this.yAxisGenerator());
     },
 
