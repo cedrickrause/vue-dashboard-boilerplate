@@ -1,13 +1,13 @@
 <template>
   <div class="dashboard">
     <b-container fluid>
-      <b-row>
-        <b-col>
+      <b-row align-h="center">
+        <b-col cols="4">
           <b-card>
             <scatter-plot-wrapper v-if="getData" :dataset="getData" />
           </b-card>
         </b-col>
-        <b-col>
+        <b-col cols="4">
           <b-card>
             <scatter-plot v-if="getData"
               :dataset="getData"
