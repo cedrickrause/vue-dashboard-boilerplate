@@ -1,7 +1,7 @@
 <template>
   <div>
       <b-container>
-        <b-row>
+        <b-form-row>
           <b-col>
             <b-form-group
               id="input-group-1"
@@ -41,7 +41,7 @@
                 required></b-form-select>
             </b-form-group>
           </b-col>
-        </b-row>
+        </b-form-row>
       </b-container>
 
     <scatter-plot v-if="this.xAxisColumn && this.yAxisColumn && this.radiusColumn"
@@ -65,9 +65,9 @@ export default Vue.extend({
   },
   data() {
     return {
-      xAxisColumn: null,
-      yAxisColumn: null,
-      radiusColumn: null,
+      xAxisColumn: '',
+      yAxisColumn: '',
+      radiusColumn: '',
     };
   },
 });
