@@ -1,5 +1,5 @@
 <template>
-  <div class="scatterplot">
+  <div class="scatterplot" ref="root">
     <svg class="scatterplot-svg" :height="height" :width="width">
       <circle v-for="element in dataset.data" :key="element[dataset.idColumn]"
         :cx="xPosition(element[xAxisColumn])"
@@ -17,8 +17,9 @@
 <script lang="ts">
 import * as d3 from 'd3';
 import Vue from 'vue';
-import { ScaleLinear } from 'd3';
+import { BaseType, ScaleLinear } from 'd3';
 import { MultivariateDataset } from '@/models/MultivariateDataset';
+import { SvgSelection } from '@/models/SvgTypes';
 
 export default Vue.extend({
   props: {
@@ -79,13 +80,15 @@ export default Vue.extend({
 
   methods: {
     createXAxis() {
-      const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.xAxis');
+      const g : SvgSelection = d3.select(this.$refs.root as BaseType)
+        .select('.xAxis');
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
         .call(d3.axisBottom(this.xScale()));
     },
 
     createYAxis() {
-      const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.yAxis');
+      const g : SvgSelection = d3.select(this.$refs.root as BaseType)
+        .select('.yAxis');
       g.attr('transform', `translate(${this.margin.left}, 0)`)
         .call(d3.axisLeft(this.yScale()));
     },
