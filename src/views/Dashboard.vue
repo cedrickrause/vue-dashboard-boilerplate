@@ -9,7 +9,11 @@
         </b-col>
         <b-col>
           <b-card>
-            <scatter-plot-wrapper v-if="getData" :dataset="getData" />
+            <scatter-plot v-if="getData"
+              :dataset="getData"
+              :xAxisColumn="'mpg'"
+              :yAxisColumn="'hp'"
+              :radiusColumn="'disp'" />
           </b-card>
         </b-col>
       </b-row>
@@ -19,13 +23,14 @@
 
 <script lang="ts">
 import ScatterPlotWrapper from '@/components/Charts/ScatterPlotWrapper.vue';
+import ScatterPlot from '@/components/Charts/ScatterPlot.vue';
 import { Actions } from '@/store/actions';
 import { Getters } from '@/store/getters';
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default Vue.extend({
-  components: { ScatterPlotWrapper },
+  components: { ScatterPlot, ScatterPlotWrapper },
   name: 'Dashboard',
 
   mounted() {
