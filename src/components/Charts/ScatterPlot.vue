@@ -81,23 +81,19 @@ export default Vue.extend({
     createXAxis() {
       const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.xAxis');
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-        .call(this.xAxisGenerator());
+        .call(d3.axisBottom(this.xScale()));
     },
 
     createYAxis() {
       const g : d3.Selection<SVGSVGElement, unknown, HTMLElement, unknown> = d3.select('.yAxis');
       g.attr('transform', `translate(${this.margin.left}, 0)`)
-        .call(this.yAxisGenerator());
+        .call(d3.axisLeft(this.yScale()));
     },
 
     xScale() : ScaleLinear<number, number, never> {
       return d3.scaleLinear()
         .domain([0, this.xMaxValue * this.axisLengthOverMaxValueFactor])
         .range([this.margin.left, this.width - this.margin.right]);
-    },
-
-    xAxisGenerator() {
-      return d3.axisBottom(this.xScale());
     },
 
     xPosition(xAxisColumnValue: number) : number {
@@ -108,9 +104,6 @@ export default Vue.extend({
       return d3.scaleLinear()
         .domain([0, this.yMaxValue * this.axisLengthOverMaxValueFactor])
         .range([this.height - this.margin.bottom, this.margin.top]);
-    },
-    yAxisGenerator() {
-      return d3.axisLeft(this.yScale());
     },
 
     yPosition(yAxisColumnValue: number) : number {
