@@ -1,6 +1,14 @@
 <template>
   <div class="dashboard">
-    <scatter-plot-wrapper v-if="getData" :dataset="getData" />
+    <b-container fluid="xl">
+      <b-row>
+        <b-col>
+          <b-card>
+            <scatter-plot-wrapper v-if="getData" :dataset="getData" />
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
