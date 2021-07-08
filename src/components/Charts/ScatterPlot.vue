@@ -125,3 +125,11 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+@import '~bootstrap/scss/bootstrap.scss';
+
+circle:hover {
+  fill: $primary;
+}
+</style>
