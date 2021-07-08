@@ -1,6 +1,6 @@
 <template>
   <div class="scatterplot" ref="root">
-    <svg class="scatterplot-svg" :height="height" :width="width">
+    <svg class="scatterplot-svg" :viewBox="`0 0 ${this.width} ${this.height}`">
       <circle v-for="element in dataset.data" :key="element[dataset.idColumn]"
         :cx="xPosition(element[xAxisColumn])"
         :cy="yPosition(element[yAxisColumn])"
