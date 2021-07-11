@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <Title msg="Dashboard Boilerplate" />
-    <navbar />
+    <ProjectTitle msg="Dashboard Boilerplate" />
+    <navigation-bar />
     <router-view/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Title from '@/components/Title.vue';
-import Navbar from './components/Navbar.vue';
+import ProjectTitle from '@/components/ProjectTitle.vue';
+import NavigationBar from './components/NavigationBar.vue';
 
 export default Vue.extend({
   components: {
-    Title,
-    Navbar,
+    ProjectTitle,
+    NavigationBar,
   },
 });
 </script>
