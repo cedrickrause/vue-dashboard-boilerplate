@@ -1,4 +1,4 @@
-# vis-research-boilerplate
+# vue-dashboard-boilerplate
 
 ## Project setup
 ```
