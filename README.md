@@ -1,34 +1,27 @@
-# vue-dashboard-boilerplate
 
-## Project setup
-```
-yarn install
-```
+# Vue-Dashboard-Boilerplate
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+This project is intended to be a good starting point for dashboard-like Vue.js projects. It should provide properly engineered guidelines that can be extended to the needs of the specific project.
+There is also an example component for a scatterplot that contains the main ideas on how to build and connect different charts / components. In the future, more basic visualizations might be added that follow
+the same principles.
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## Installation
 
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
+To install this project for further development purposes simply clone it and then:
 
-### Lints and fixes files
+```bash
+  cd vue-dashboard-boilerplate
+  yarn serve
 ```
-yarn lint
-```
+    
+## Tech Stack
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Vue.js
+* Vuex
+* Vue Router
+* BootstrapVue
+* TypeScript
+
+
+  
