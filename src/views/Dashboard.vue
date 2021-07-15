@@ -9,6 +9,16 @@
           </b-card>
         </b-col>
         <b-col cols="3">
+          <b-card
+            title="Scatterplot without Wrapper">
+            <scatter-plot v-if="getData"
+              :dataset="getData"
+              :xAxisColumn="'mpg'"
+              :yAxisColumn="'hp'"
+              :radiusColumn="'disp'" />
+          </b-card>
+        </b-col>
+        <b-col cols="3">
           <b-card class="h-100"
             title="Scatterplot without Wrapper">
             <scatter-plot v-if="getData"
@@ -21,6 +31,16 @@
                 the class h-100 is added to make the card fill out the whole row height.
               </b-card-text>
           </b-card>
+        </b-col>
+        <b-col cols="3">
+          <scatter-plot v-if="getData"
+            :dataset="getData"
+            :xAxisColumn="'wt'"
+            :yAxisColumn="'mpg'"
+            :radiusColumn="'am'" />
+            <p>
+              It is also possible to place a plot without using it as a card.
+            </p>
         </b-col>
       </b-row>
     </b-container>
