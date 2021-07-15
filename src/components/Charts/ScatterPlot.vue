@@ -2,9 +2,11 @@
   <div class="scatterplot" ref="root">
     <svg class="scatterplot-svg" :viewBox="`0 0 ${this.width} ${this.height}`">
       <circle v-for="element in dataset.data" :key="element.id"
+        :class="{ selectedElement: element.id === getSelectedElementId }"
         :cx="xPosition(element.values[xAxisColumn])"
         :cy="yPosition(element.values[yAxisColumn])"
         :r="radius(element.values[radiusColumn])"
+        v-on:click="selectElement(element.id)"
         />
         <g class="xAxis">
         </g>
@@ -20,6 +22,9 @@ import Vue from 'vue';
 import { BaseType, ScaleLinear } from 'd3';
 import { MultivariateDataset } from '@/models/MultivariateDataset';
 import { SvgSelection } from '@/models/SvgTypes';
+import { mapActions, mapGetters } from 'vuex';
+import { Getters } from '@/store/getters';
+import { Actions } from '@/store/actions';
 
 export default Vue.extend({
   props: {
@@ -59,6 +64,10 @@ export default Vue.extend({
   },
 
   computed: {
+    ...mapGetters({
+      getSelectedElementId: Getters.GET_SELECTED_ELEMENT_ID,
+    }),
+
     xMaxValue(): number {
       return Math.max(...this.dataset.data.map(
         (entry) => entry.values[this.xAxisColumn],
@@ -79,6 +88,10 @@ export default Vue.extend({
   },
 
   methods: {
+    ...mapActions({
+      selectElement: Actions.SELECT_ELEMENT,
+    }),
+
     createXAxis() {
       const g : SvgSelection = d3.select(this.$refs.root as BaseType)
         .select('.xAxis');
@@ -130,6 +143,11 @@ export default Vue.extend({
 @import '@/style/custom.scss';
 
 circle:hover {
+  stroke: $primary;
+  stroke-width: 3px;
+}
+
+circle.selectedElement {
   fill: $primary;
 }
 </style>
