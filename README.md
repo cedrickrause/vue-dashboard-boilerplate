@@ -12,6 +12,7 @@ To install this project for further development purposes simply clone it and the
 
 ```bash
   cd vue-dashboard-boilerplate
+  yarn
   yarn serve
 ```
     
