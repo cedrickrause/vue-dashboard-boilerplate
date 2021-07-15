@@ -1,8 +1,9 @@
 import { BaseDataset } from './BaseDataset';
 
 export type MultivariateDatasetEntry = {
-  [key: string]: number,
- };
+  id: string,
+  values: {[key: string]: number},
+};
 
 export interface MultivariateDataset extends BaseDataset {
   data: Array<MultivariateDatasetEntry>,

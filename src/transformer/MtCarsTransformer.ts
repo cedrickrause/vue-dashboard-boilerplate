@@ -15,13 +15,13 @@ export class MtCarsTransformerImpl implements MtCarsTransformer {
       const [idColumn] = loadedData.columns;
 
       const multivariateDatasetEntries = loadedData.map((entry) => {
-        const multivariateDatasetEntry: MultivariateDatasetEntry = {};
+        const multivariateDatasetEntry: MultivariateDatasetEntry = { values: {}, id: '' };
         Object.keys(entry).slice(1).forEach((key) => {
-          multivariateDatasetEntry[key] = parseFloat(entry[key] || '');
+          multivariateDatasetEntry.values[key] = parseFloat(entry[key] || '');
         });
+        multivariateDatasetEntry.id = entry[idColumn] || '';
         return multivariateDatasetEntry;
       });
-
       return new MultivariateDatasetImpl(
         multivariateDatasetEntries, loadedData.columns, idColumn,
       );

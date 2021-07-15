@@ -1,10 +1,10 @@
 <template>
   <div class="scatterplot" ref="root">
     <svg class="scatterplot-svg" :viewBox="`0 0 ${this.width} ${this.height}`">
-      <circle v-for="element in dataset.data" :key="element[dataset.idColumn]"
-        :cx="xPosition(element[xAxisColumn])"
-        :cy="yPosition(element[yAxisColumn])"
-        :r="radius(element[radiusColumn])"
+      <circle v-for="element in dataset.data" :key="element.id"
+        :cx="xPosition(element.values[xAxisColumn])"
+        :cy="yPosition(element.values[yAxisColumn])"
+        :r="radius(element.values[radiusColumn])"
         />
         <g class="xAxis">
         </g>
@@ -61,19 +61,19 @@ export default Vue.extend({
   computed: {
     xMaxValue(): number {
       return Math.max(...this.dataset.data.map(
-        (entry) => entry[this.xAxisColumn],
+        (entry) => entry.values[this.xAxisColumn],
       ));
     },
 
     yMaxValue(): number {
       return Math.max(...this.dataset.data.map(
-        (entry) => entry[this.yAxisColumn],
+        (entry) => entry.values[this.yAxisColumn],
       ));
     },
 
     radiusMaxValue(): number {
       return Math.max(...this.dataset.data.map(
-        (entry) => entry[this.radiusColumn],
+        (entry) => entry.values[this.radiusColumn],
       ));
     },
   },
