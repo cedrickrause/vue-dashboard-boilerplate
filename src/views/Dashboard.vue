@@ -20,12 +20,10 @@
         </b-col>
         <b-col cols="3">
           <b-card class="h-100"
-            title="Scatterplot without Wrapper">
-            <scatter-plot v-if="getData"
+            title="Parallel Coordinate Plot without Wrapper">
+            <parallel-coordinate-plot v-if="getData"
               :dataset="getData"
-              :xAxisColumn="'mpg'"
-              :yAxisColumn="'hp'"
-              :radiusColumn="'disp'" />
+              :columns="getData.columns" />
               <b-card-text>
                 Because this card's content is smaller than the one with the wrapper,
                 the class h-100 is added to make the card fill out the whole row height.
@@ -35,9 +33,9 @@
         <b-col cols="3">
           <scatter-plot v-if="getData"
             :dataset="getData"
-            :xAxisColumn="'wt'"
-            :yAxisColumn="'mpg'"
-            :radiusColumn="'am'" />
+            :xAxisColumn="'mpg'"
+            :yAxisColumn="'hp'"
+            :radiusColumn="'disp'" />
             <p>
               It is also possible to place a plot without using it as a card.
             </p>
@@ -54,9 +52,10 @@ import { Actions } from '@/store/actions';
 import { Getters } from '@/store/getters';
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
+import ParallelCoordinatePlot from '@/components/Charts/ParallelCoordinatePlot.vue';
 
 export default Vue.extend({
-  components: { ScatterPlot, ScatterPlotWrapper },
+  components: { ScatterPlot, ScatterPlotWrapper, ParallelCoordinatePlot },
   name: 'Dashboard',
 
   mounted() {
