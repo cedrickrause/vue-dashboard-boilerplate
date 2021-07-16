@@ -21,7 +21,7 @@ import * as d3 from 'd3';
 import Vue from 'vue';
 import { BaseType, ScaleLinear } from 'd3';
 import { MultivariateDataset } from '@/models/MultivariateDataset';
-import { SvgSelection } from '@/models/SvgTypes';
+import { SvgSelection } from '@/helpers/d3helpers';
 import { mapActions, mapGetters } from 'vuex';
 import { Getters } from '@/store/getters';
 import { Actions } from '@/store/actions';
@@ -85,6 +85,24 @@ export default Vue.extend({
         (entry) => entry.values[this.radiusColumn],
       ));
     },
+
+    xScale() : ScaleLinear<number, number, never> {
+      return d3.scaleLinear()
+        .domain([0, this.xMaxValue * this.axisLengthOverMaxValueFactor])
+        .range([this.margin.left, this.width - this.margin.right]);
+    },
+
+    yScale() : ScaleLinear<number, number, never> {
+      return d3.scaleLinear()
+        .domain([0, this.yMaxValue * this.axisLengthOverMaxValueFactor])
+        .range([this.height - this.margin.bottom, this.margin.top]);
+    },
+
+    radiusScale() : ScaleLinear<number, number, never> {
+      return d3.scaleLinear()
+        .domain([0, this.radiusMaxValue])
+        .range([this.minRadius, this.maxRadius]);
+    },
   },
 
   methods: {
@@ -96,44 +114,26 @@ export default Vue.extend({
       const g : SvgSelection = d3.select(this.$refs.root as BaseType)
         .select('.xAxis');
       g.attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-        .call(d3.axisBottom(this.xScale()));
+        .call(d3.axisBottom(this.xScale));
     },
 
     createYAxis() {
       const g : SvgSelection = d3.select(this.$refs.root as BaseType)
         .select('.yAxis');
       g.attr('transform', `translate(${this.margin.left}, 0)`)
-        .call(d3.axisLeft(this.yScale()));
-    },
-
-    xScale() : ScaleLinear<number, number, never> {
-      return d3.scaleLinear()
-        .domain([0, this.xMaxValue * this.axisLengthOverMaxValueFactor])
-        .range([this.margin.left, this.width - this.margin.right]);
+        .call(d3.axisLeft(this.yScale));
     },
 
     xPosition(xAxisColumnValue: number) : number {
-      return this.xScale()(xAxisColumnValue);
-    },
-
-    yScale() : ScaleLinear<number, number, never> {
-      return d3.scaleLinear()
-        .domain([0, this.yMaxValue * this.axisLengthOverMaxValueFactor])
-        .range([this.height - this.margin.bottom, this.margin.top]);
+      return this.xScale(xAxisColumnValue);
     },
 
     yPosition(yAxisColumnValue: number) : number {
-      return this.yScale()(yAxisColumnValue);
-    },
-
-    radiusScale() : ScaleLinear<number, number, never> {
-      return d3.scaleLinear()
-        .domain([0, this.radiusMaxValue])
-        .range([this.minRadius, this.maxRadius]);
+      return this.yScale(yAxisColumnValue);
     },
 
     radius(radiusColumnValue: number) : number {
-      return this.radiusScale()(radiusColumnValue);
+      return this.radiusScale(radiusColumnValue);
     },
   },
 });
